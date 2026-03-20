@@ -1,0 +1,6 @@
+# IDE and editor settings
+.vscode/
+
+# Service secrets and local environment
+service/.env
+service/.venv/
