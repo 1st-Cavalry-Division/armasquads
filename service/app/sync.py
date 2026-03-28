@@ -51,6 +51,8 @@ async def perform_sync(settings: Settings) -> None:
             for p in personnel
         }
         members.sort(key=lambda m: -rank_order_map.get(m.steam_id, 0))
+        logo_base = (settings.logo_filename or "").strip()
+        logo_picture = f"{logo_base}.paa" if logo_base else None
 
         new_data = SquadData(
             tag=settings.squad_tag,
@@ -58,7 +60,7 @@ async def perform_sync(settings: Settings) -> None:
             email=settings.squad_email,
             web=settings.squad_web,
             title=settings.squad_title,
-            logo=settings.logo_filename,
+            logo=logo_picture,
             members=members,
             last_sync=datetime.now(timezone.utc),
         )
